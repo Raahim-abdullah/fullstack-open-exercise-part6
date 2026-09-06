@@ -6,11 +6,14 @@ const useAnecdoteStore = create((set) => ({
   anecdotes: [],
   filter: "",
   actions: {
-    vote: id => set(state => ({
-      anecdotes: state.anecdotes.map(a =>
-        a.id === id ? { ...a, votes: a.votes + 1 } : a)
-    })
-    ),
+    vote: async anecdote => {
+      const voted = await anecdoteService.vote(anecdote)
+      set(state => ({
+        anecdotes: state.anecdotes.map(a =>
+          a.id === voted.id ? voted : a)
+      })
+      )
+    },
     create: async content => {
       const newAnecdote = await anecdoteService.create(content)
       set(state => ({

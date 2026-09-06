@@ -31,6 +31,14 @@ const useAnecdoteStore = create((set) => ({
     initialize: async () => {
       const anecdotes = await anecdoteService.getAll()
       set(() => ({ anecdotes }))
+    },
+    remove: async id => {
+      const deleted = await anecdoteService.remove(id)
+      set((state) => ({ anecdotes: state.anecdotes.filter(anecdote => anecdote.id === id ? null : anecdote) }))
+      useNotificationStore.getState().actions.setMessage(`you deleted '${deleted.content}`)
+      setTimeout(() => {
+        useNotificationStore.getState().actions.setMessage('')
+      }, 3000)
     }
   },
 }))

@@ -1,11 +1,13 @@
+import { useUnicafeStore } from "../store"
+
 const Statistics = () => {
-  const good = 0
-  const neutral = 0
-  const bad = 0
-  const all = 0
-  const average = 0
-  const positive = 0
-  
+  const good = useUnicafeStore(state => state.good)
+  const neutral = useUnicafeStore(state => state.neutral)
+  const bad = useUnicafeStore(state => state.bad)
+  const all = good + neutral + bad
+  const average = (good - bad) / (good + neutral + bad) || 0
+  const positive = isNaN(good / (good + neutral + bad) * 100) ? "0 %" : (good / (good + neutral + bad) * 100) + " %"
+
   return (
     <div>
       <h2>statistics</h2>

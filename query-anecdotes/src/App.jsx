@@ -16,7 +16,7 @@ const App = () => {
           <div>loading data...</div>
         ) : (
           <>
-            {isError ? (<div>anecdote service is not available due to problem in server</div>
+            {isError ? (<div>anecdote service not available due to problems in server</div>
             ) : null}
 
             {isSuccess ? (

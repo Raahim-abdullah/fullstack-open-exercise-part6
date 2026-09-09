@@ -1,6 +1,6 @@
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
-import { useAnecdotes } from './hocks/useAnecdotes'
+import { useAnecdotes } from './hooks/useAnecdotes'
 
 const App = () => {
   const { isPending, isError, isSuccess, anecdotes, vote: updateAnecdoteMutation } = useAnecdotes()

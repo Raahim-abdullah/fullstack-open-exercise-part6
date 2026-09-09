@@ -1,4 +1,4 @@
-import { useAnecdotes } from '../hocks/useAnecdotes'
+import { useAnecdotes } from '../hooks/useAnecdotes'
 
 const AnecdoteForm = () => {
   const { addAnecdote: newAnecdoteMutation } = useAnecdotes()
